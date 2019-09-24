@@ -2,7 +2,13 @@
 	"name": "hawk-transliterator",
 	"displayName": "Hawk Transliterator",
 	"description": "transliterator helper for multiple languages",
-	"version": "0.0.1",
+	"version": "0.0.2",
+	"publisher": "leaphawk",
+	"icon": "assets/logo.png",
+	"author": {
+		"name": "Leap Hawk",
+		"url": "https://leaphawk.com"
+	},
 	"scripts": {
 		"vscode:prepublish": "npm run compile",
 		"compile": "tsc -p ./",
