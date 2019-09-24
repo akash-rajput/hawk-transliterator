@@ -1,0 +1,75 @@
+{
+	"name": "hawk-transliterator",
+	"displayName": "Hawk Transliterator",
+	"description": "transliterator helper for multiple languages",
+	"version": "0.0.1",
+	"scripts": {
+		"vscode:prepublish": "npm run compile",
+		"compile": "tsc -p ./",
+		"watch": "tsc -watch -p ./",
+		"pretest": "npm run compile",
+		"test": "node ./out/test/runTest.js"
+	},
+	"engines": {
+		"vscode": "^1.38.0"
+	},
+	"categories": [
+		"SCM Providers",
+		"Formatters",
+		"Other"
+	],
+	"activationEvents": [
+		"onCommand:extension.transliterator"
+	],
+	"main": "./out/extension.js",
+	"contributes": {
+		"commands": [{
+			"command": "extension.transliterator",
+			"title": "Toggle Hawk Transliterator",
+			"icon": "./assets/images/logo.png"
+		}],
+		"keybindings": [{
+			"command": "extension.transliterator",
+			"key": "ctrl+i",
+			"mac": "cmd+i",
+			"when": "editorTextFocus"
+		}],
+		"configuration": {
+			"title": "transliterator",
+			"properties": {
+				"com.leaphawk.transliterator.languages": {
+					"type": "string",
+					"description": "ISO Codes of language to translate to.",
+					"default": ["hi", "he"]
+				},
+				"com.leaphawk.transliterator.suggestions": {
+					"type": "integer",
+					"description": "Number of suggestions to show for the word per language",
+					"default": 2
+				}
+			}
+		},
+		"menus": {
+			"touchBar": [{
+				"command": "extension.transliterator",
+				"when": "editorHasCompletionItemProvider && editorTextFocus && !editorReadonly",
+				"group": "hawk-transliterator-group"
+			}]
+		}
+	},
+	"devDependencies": {
+		"@types/glob": "^7.1.1",
+		"@types/mocha": "^5.2.6",
+		"@types/node": "^10.12.21",
+		"@types/node-fetch": "2.5.1",
+		"@types/vscode": "^1.38.0",
+		"glob": "^7.1.4",
+		"mocha": "^6.1.4",
+		"tslint": "^5.12.1",
+		"typescript": "^3.3.1",
+		"vscode-test": "^1.2.0"
+	},
+	"dependencies": {
+		"node-fetch": "^2.6.0"
+	}
+}
